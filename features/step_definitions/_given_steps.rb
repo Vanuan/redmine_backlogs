@@ -430,7 +430,7 @@ end
 
 Given /^I have configured backlogs plugin to include Saturday and Sunday in burndown$/ do
   Rails.cache.clear
-  Backlogs.setting[:include_sat_and_sun] = true
+  Setting.plugin_redmine_backlogs = Setting.plugin_redmine_backlogs.merge({:include_sat_and_sun => true})
 end
 
 Given /^timelog from taskboard has been enabled$/ do
