@@ -106,43 +106,22 @@ module Backlogs
   end
   module_function :task_workflow
 
-  def migration_versions_by_filenames(filenames)
-    return filenames.collect{|m|
-             Integer(File.basename(m).split('_')[0].gsub(/^0+/, ''))
-           }.sort
-  end
-  module_function :migration_versions_by_filenames
-
-  def migration_names_by_filenames(filenames)
-    return filenames.collect{|m|
-             File.basename(m).split('.')[0].sub(/^[0-9]*_/, '')
-           }.sort
-  end
-  module_function :migration_names_by_filenames
-
-
   def migrated?
-    available_migrations =
-      Dir[File.join(File.dirname(__FILE__), '..', 'db', 'migrate', '*.rb')]
-    installed_migrations =
-      Dir[Rails.root.join('db', 'migrate', '*.redmine_backlogs.rb')]
-    available = migration_names_by_filenames(available_migrations)
-    installed = migration_names_by_filenames(installed_migrations)
+    return true
+    available = Dir[File.join(File.dirname(__FILE__), '../db/migrate/*.rb')].collect{|m| Integer(File.basename(m).split('_')[0].gsub(/^0+/, ''))}.sort
     return true if available.size == 0
-    return false unless available - installed == []
+    available = available[-1]
 
-    installed_versions = migration_versions_by_filenames(installed_migrations)
+    ran = []
+    Setting.connection.execute("select version from schema_migrations where version like '%-redmine_backlogs'").each{|m|
+      ran << Integer((m.is_a?(Hash) ? m.values : m)[0].split('-')[0])
+    }
+    return false if ran.size == 0
+    ran = ran.sort[-1]
 
-    ran_versions = []
-    Setting.connection.execute(
-      "select version from schema_migrations").each{|m|
-                                                 ran_versions << Integer(m[0])
-                                              }
-
-    return installed_versions - ran_versions == []
+    return ran >= available
   end
   module_function :migrated?
-
 
   def configured?(project=nil)
     return false if Backlogs.gems.values.reject{|installed| installed}.size > 0
