@@ -1,9 +1,10 @@
-require 'spec_helper'
-
+require 'fast_spec_helper'
 require 'rb_story'
 
 describe RbStory, "#update_attributes" do
   it "create and update" do
+    RbStory.stub!(:find).and_return([RbStory.new])
+
     story = RbStory.new('subject'=>'Story 3', 'project_id'=>1,
               'author_id' => '1',"done_ratio" => "0",
               'estimated_hours' => '8',

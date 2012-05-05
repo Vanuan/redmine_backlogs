@@ -1,0 +1,57 @@
+class Issue
+
+  def self.column_names
+    [ "subject", "estimated_hours" ]
+  end
+
+  def becomes(klass)
+    klass.new(self.attributes)
+  end
+
+  def initialize(attributes=nil, *args)
+    @attributes = attributes
+    unless attributes == nil
+      @subject = attributes["subject"]
+      @estimated_hours = attributes["estimated_hours"].to_i
+    end
+  end
+
+  def attributes
+    @attributes
+  end
+
+  def update_attributes(attributes=nil, *args)
+    
+  end
+
+  def subject
+    @subject
+  end
+
+  def estimated_hours
+    @estimated_hours
+  end
+
+  def save!
+    true
+  end
+
+  def init_journal(user, notes = "")
+  end
+
+
+end
+
+def before_save(arg)
+end
+
+def after_save(arg)
+end
+def after_destroy(arg)
+end
+
+def unloadable
+end
+
+def acts_as_list
+end
