@@ -182,6 +182,8 @@ class RbJournal < ActiveRecord::Base
     # this test against blank *only* works when not storing string properties! Otherwise test against nil? here and handle
     # blank? per-type
     return nil if v.blank?
+    return nil if v.nil?
+    return nil if v == "nil"
 
     case RbJournal::JOURNALED_PROPERTIES[self[:property]]
       when :bool
