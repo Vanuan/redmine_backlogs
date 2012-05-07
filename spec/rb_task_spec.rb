@@ -9,8 +9,8 @@ describe RbTask, "#save" do
               'estimated_hours' => '8',
               'tracker_id'=>'1')
     task.save!.should be_true
-    task.subject.should eq('rails 3')
-    task.estimated_hours.should eq(8)
+    task.subject.should == ('rails 3')
+    task.estimated_hours.should == (8)
   end
 end
 

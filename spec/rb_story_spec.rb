@@ -10,8 +10,8 @@ describe RbStory, "#update_attributes" do
               'estimated_hours' => '8',
               'tracker_id'=>'1')
     story.save!.should be_true
-    story.subject.should eq('Story 3')
-    story.estimated_hours.should eq(8)
+    story.subject.should == ('Story 3')
+    story.estimated_hours.should == (8)
 
     story = RbStory.find(:all, :conditions => { :subject => 'Story 3' }).first
     story.update_and_position!('subject'=>'rails 3', 'project_id'=>1,
@@ -19,8 +19,8 @@ describe RbStory, "#update_attributes" do
               'estimated_hours' => '8',
               'tracker_id'=>'1')
     story.save!.should be_true
-    story.subject.should eq('rails 3')
-    story.estimated_hours.should eq(8)
+    story.subject.should == ('rails 3')
+    story.estimated_hours.should == (8)
   end
 end
 
