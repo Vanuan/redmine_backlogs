@@ -1,0 +1,2 @@
+class HashWithIndifferentAccess < Hash
+end

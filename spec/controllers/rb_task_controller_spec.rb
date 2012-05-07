@@ -1,4 +1,6 @@
-require 'spec_helper'
+require 'fast_spec_helper'
+
+require 'rb_tasks_controller'
 
 describe RbTasksController, "#create" do
   it "creates tasks" do
@@ -14,8 +16,7 @@ describe RbTasksController, "#create" do
               'tracker_id'=>'1', :parent_issue_id => story.id)
 
     params = HashWithIndifferentAccess.new(task.attributes)
-    print params
-    post 'create', params
+    RbTasksController.new.create
     
     story.children.size.should == 1
   end

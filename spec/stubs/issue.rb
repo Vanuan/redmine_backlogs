@@ -1,7 +1,11 @@
 class Issue
 
+  def children
+    []
+  end
+
   def self.column_names
-    [ "subject", "estimated_hours" ]
+    [ "subject", "estimated_hours", "id" ]
   end
 
   def becomes(klass)
@@ -11,6 +15,7 @@ class Issue
   def initialize(attributes=nil, *args)
     @attributes = attributes
     unless attributes == nil
+      @id = attributes["id"]
       @subject = attributes["subject"]
       @estimated_hours = attributes["estimated_hours"].to_i
     end
@@ -22,6 +27,10 @@ class Issue
 
   def update_attributes(attributes=nil, *args)
     
+  end
+
+  def id
+    @id
   end
 
   def subject
