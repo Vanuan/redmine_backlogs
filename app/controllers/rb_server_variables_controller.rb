@@ -4,7 +4,8 @@ class RbServerVariablesController < RbApplicationController
   def index
     @context = params[:context]
     respond_to do |format|
-      format.js { render :file => 'rb_server_variables/show.js.erb', :layout => false }
+      # TODO for some reason format.js is broken
+      format.html { render :file => 'rb_server_variables/show.js.erb', :layout => false, :content_type => 'text/javascript' }
     end
   end
 
