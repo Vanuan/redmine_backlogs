@@ -66,14 +66,15 @@ class RbMasterBacklogsController < RbApplicationController
               :warning => view_context().escape_javascript(l(:warning_reset_sprint)).gsub(/\/n/, "\n")
              } if @sprint && @sprint.sprint_start_date && User.current.allowed_to?(:reset_sprint, @project)
 
-  if Rails::VERSION::MAJOR < 3
-    def view_context
-      @template
-    end
-  end
 
     respond_to do |format|
       format.json { render :json => links }
+    end
+  end
+
+  if Rails::VERSION::MAJOR < 3
+    def view_context
+      @template
     end
   end
 end
