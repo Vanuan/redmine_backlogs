@@ -86,7 +86,7 @@ module Backlogs
     installed.delete('system_timer') unless os == :unix && RUBY_VERSION =~ /^1\.8\./
     installed.keys.each{|gem|
       begin
-        require gem
+      #  require gem
         installed[gem] = true
       rescue LoadError
       end
