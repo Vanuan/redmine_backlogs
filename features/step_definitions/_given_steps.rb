@@ -194,7 +194,7 @@ Given /^the (.*) project has the backlogs plugin enabled$/ do |project_id|
   @project.update_attribute :tracker_ids, (story_trackers << task_tracker)
 
   # make sure existing stories don't occupy positions that the tests are going to use
-  Issue.connection.execute("update issues set position = (position - #{Issue.minimum(:position)}) + #{Issue.maximum(:position)} + 50000")
+  # Issue.connection.execute("update issues set position = (position - #{Issue.minimum(:position)}) + #{Issue.maximum(:position)} + 50000")
 end
 
 Given /^no versions or issues exist$/ do
