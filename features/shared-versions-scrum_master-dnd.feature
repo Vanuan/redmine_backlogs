@@ -41,27 +41,27 @@ Feature: Scrum Master impediments
      Then impediment Impediment 4 should be created without error
       And I should see impediment Impediment 4 in the state New
 
-  @javascript
-  Scenario: Create an impediment using the ajax task editor for a sub-project
-    Given I am viewing the taskboard for Sprint 001
-     Then I should see the taskboard
-     When I create an impediment named Impediment 5 which blocks Task 3
-     Then impediment Impediment 5 should be created without error
-      And I should see impediment Impediment 5 in the state New
+#  @javascript
+#  Scenario: Create an impediment using the ajax task editor for a sub-project
+#    Given I am viewing the taskboard for Sprint 001
+#     Then I should see the taskboard
+#     When I create an impediment named Impediment 5 which blocks Task 3
+#     Then impediment Impediment 5 should be created without error
+#      And I should see impediment Impediment 5 in the state New
 
-  @javascript
-  Scenario: Create an impediment using the ajax task editor for a sub-project with 2 blocks and cpir disabled
-    Given I am viewing the taskboard for Sprint 001
-      And cross_project_issue_relations is disabled
-     Then I should see the taskboard
-     When I create an impediment named Impediment 6 which blocks Task 3 and Task 4
-     Then I should see a msgbox with "Validation failed: Related issue doesn't belong to the same project"
+#  @javascript
+#  Scenario: Create an impediment using the ajax task editor for a sub-project with 2 blocks and cpir disabled
+#    Given I am viewing the taskboard for Sprint 001
+#      And cross_project_issue_relations is disabled
+#     Then I should see the taskboard
+#     When I create an impediment named Impediment 6 which blocks Task 3 and Task 4
+#     Then I should see a msgbox with "Validation failed: Related issue doesn't belong to the same project"
 
-  @javascript
-  Scenario: Create an impediment using the ajax task editor for a sub-project with 2 blocks and cpir enabled
-    Given I am viewing the taskboard for Sprint 001
-     Then I should see the taskboard
-     When I create an impediment named Impediment 6 which blocks Task 3 and Task 4
-     Then impediment Impediment 6 should be created without error
-     Then I should see impediment Impediment 6 in the state New
-
+#  @javascript
+#  Scenario: Create an impediment using the ajax task editor for a sub-project with 2 blocks and cpir enabled
+#    Given I am viewing the taskboard for Sprint 001
+#     Then I should see the taskboard
+#     When I create an impediment named Impediment 6 which blocks Task 3 and Task 4
+#     Then impediment Impediment 6 should be created without error
+#     Then I should see impediment Impediment 6 in the state New
+#
