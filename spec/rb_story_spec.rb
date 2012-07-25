@@ -1,4 +1,4 @@
-require 'fast_spec_helper'
+require_relative 'fast_spec_helper'
 require 'rb_story'
 
 describe RbStory, "#update_attributes" do

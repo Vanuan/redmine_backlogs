@@ -48,6 +48,8 @@ class Issue
   def init_journal(user, notes = "")
   end
 
+  def self.safe_attributes(param)
+  end
 
 end
 
@@ -63,4 +65,7 @@ def unloadable
 end
 
 def acts_as_list
+end
+
+def acts_as_list_with_gaps(param)
 end

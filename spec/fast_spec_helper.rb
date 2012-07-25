@@ -25,3 +25,4 @@ require 'backlogs_issue_patch'
 require 'backlogs_setup'
 require 'rb_common_helper'
 require 'rb_application_controller'
+

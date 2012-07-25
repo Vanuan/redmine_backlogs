@@ -1,4 +1,4 @@
-require_dependency 'issue'
+require 'issue'
 
 module Backlogs
   module IssuePatch
